@@ -1,66 +1,6 @@
 <?php
 
-
-/**
- * classe che definisce le proprietà di ogni film
- */
-
-class Movie {
-    public $titolo;
-    public $linguaOriginale;
-    public $anno;
-    public $poster;
-    public $genere;
-    
-    /**
-     * __construct
-     *
-     * @param  string $_titolo
-     * @param  string $_linguaOriginale
-     * @param  int $_anno
-     *
-     */
-    function __construct($_titolo, $_linguaOriginale, $_anno) {
-        $this->titolo = $_titolo;
-        $this->linguaOriginale = $_linguaOriginale;
-        $this->anno = $_anno;
-
-    }
-
-        
-    /**
-     * funzione che ritorna una frase
-     *
-     */
-    public function presentazione() {
-        echo "Ecco i film presenti nel database:";
-    }
-
-
-}
-
-// istanzio tre oggetti di classe Movie
-$movie1 = new Movie("Bastardi senza gloria", "eng", 2009);
-$movie2 = new Movie("Kill Bill Volume 1", "eng", 2003);
-$movie3 = new Movie("Grand Budapest Hotel", "eng", 2014);
-
-// Aggiungo ad ognuno genere e poster 
-$movie1->poster = "https://pad.mymovies.it/filmclub/2008/10/105/locandina.jpg";
-$movie1->genere = "Guerra";
-
-$movie2->poster = "https://m.media-amazon.com/images/I/61mUJ4Zxc8L._AC_UF894,1000_QL80_DpWeblab_.jpg";
-$movie2->genere = "Azione";
-
-$movie3->poster = "https://m.media-amazon.com/images/I/711-gHvPVqL._AC_UF1000,1000_QL80_.jpg";
-$movie3->genere = "Commedia";
-
-// creo un array con dentro i tre film
-$movies = [
-    $movie1,
-    $movie2,
-    $movie3
-
-];
+require 'db.php';
 
 ?>
 
@@ -87,9 +27,7 @@ $movies = [
 
 <body class="bg-dark">
 
-    <header class="container-fluid bg-secondary">
-        <h1 class="text-warning fs-1 p-3 text-center">Film</h1>
-    </header>
+    <?php include './layout/header.php' ?>
     
     <main class="container-fluid"> 
 
@@ -116,8 +54,13 @@ $movies = [
                         <strong class='text-warning'>Anno di uscita: </strong>"  . $movie->anno . "
                     </div>
                     <div>
-                    <strong class='text-warning'>Genere: </strong>"  . $movie->genere . "
-                </div>
+                        <strong class='text-warning'>Genere: </strong>"  . $movie->genere . "
+                    </div>
+
+                    <div>
+                        <strong class='text-warning'>Regista: </strong>"  . $movie->regista->getInfoDirector() . "
+                    </div>
+
                 </div>";
 
             }
