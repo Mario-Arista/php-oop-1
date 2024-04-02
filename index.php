@@ -1,3 +1,57 @@
+<?php
+
+
+/**
+ * classe che definisce le proprietà di ogni film
+ */
+
+class Movie {
+    public $titolo;
+    public $linguaOriginale;
+    public $anno;
+    
+    /**
+     * __construct
+     *
+     * @param  string $_titolo
+     * @param  string $_linguaOriginale
+     * @param  int $_anno
+     *
+     */
+    function __construct($_titolo, $_linguaOriginale, $_anno) {
+        $this->titolo = $_titolo;
+        $this->linguaOriginale = $_linguaOriginale;
+        $this->anno = $_anno;
+
+    }
+
+        
+    /**
+     * funzione che ritorna una frase
+     *
+     */
+    public function presentazione() {
+        echo "Ecco i film presenti nel database:";
+    }
+
+
+}
+
+// istanzio tre oggetti di classe Movie 
+$movie1 = new Movie("Bastardi senza gloria", "eng", 2009);
+$movie2 = new Movie("Kill Bill Volume 1", "eng", 2003);
+$movie3 = new Movie("Grand Budapest Hotel", "eng", 2014);
+
+// creo un array con dentro i tre film
+$movies = [
+    $movie1,
+    $movie2,
+    $movie3
+
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="it-IT">
 <head>
@@ -13,11 +67,30 @@
 <body class="bg-dark">
 
     <header class="container-fluid bg-secondary">
-        <h1 class="text-warning fs-1 p-3 text-center">Movies</h1>
+        <h1 class="text-warning fs-1 p-3 text-center">Film</h1>
     </header>
     
     <main class="container-fluid"> 
 
+        <ul class="w-75 m-auto">
+
+            <h2 class="text-warning pt-4 pb-4">
+                <?php $movie1->presentazione(); ?>
+            </h2>
+
+            <?php
+            foreach($movies as $movie) {
+
+                echo "
+                <li class='list-unstyled text-white mb-3'>
+                    <strong class='text-warning'>Titolo: </strong>" . $movie->titolo . " <br>   
+                    <strong class='text-warning'>Lingua originale:  </strong>" . $movie->linguaOriginale . " <br> 
+                    <strong class='text-warning'>Anno uscita:  </strong>" . $movie->anno . "
+                </li>";
+
+            }
+            ?>
+        </ul>
     </main>
 
 
