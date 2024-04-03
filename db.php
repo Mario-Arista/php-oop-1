@@ -1,6 +1,8 @@
 <?php
 
 require './Models/Movie.php';
+require './Models/Director.php';
+
 
 // istanzio tre oggetti di classe Director
 $director1 = new Director("Quentin", "Tarantino", "Americano");
@@ -14,13 +16,13 @@ $movie3 = new Movie("Grand Budapest Hotel", "eng", 2014, $director2);
 
 // Aggiungo ad ognuno genere e poster 
 $movie1->poster = "https://pad.mymovies.it/filmclub/2008/10/105/locandina.jpg";
-$movie1->genere = "Guerra";
+$movie1->genere = "Avventura, Drammatico, Guerra";
 
 $movie2->poster = "https://m.media-amazon.com/images/I/61mUJ4Zxc8L._AC_UF894,1000_QL80_DpWeblab_.jpg";
-$movie2->genere = "Azione";
+$movie2->genere = "Azione, Thriller";
 
 $movie3->poster = "https://m.media-amazon.com/images/I/711-gHvPVqL._AC_UF1000,1000_QL80_.jpg";
-$movie3->genere = "Commedia";
+$movie3->genere = "Commedia, Drammatico, Avventura";
 
 // creo un array con dentro i tre film
 $movies = [
